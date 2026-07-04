@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-injected>html,body{background:transparent}</style><script data-omelette-injected>(()=>{{const Y=new URLSearchParams(location.search).get("theme");if(Y==="light"||Y==="dark"){document.documentElement.dataset.theme=Y}}{const Y=()=>{try{if(document.querySelector('meta[name="color-scheme"]'))return;const k=getComputedStyle(document.documentElement).getPropertyValue("color-scheme").trim();if(k&&k!=="normal")return;const w=(X)=>{if(!X)return null;const F=getComputedStyle(X).backgroundColor.match(/^rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)(?:[,\s/]+([\d.]+%?))?\s*\)$/);if(!F)return null;const K=F[4]==null?1:parseFloat(F[4])/(F[4].endsWith("%")?100:1);if(K<0.99)return null;return[+F[1],+F[2],+F[3]]};const U=w(document.body)||w(document.documentElement);if(!U)return;const x=(X)=>{const F=X/255;return F<=0.04045?F/12.92:((F+0.055)/1.055)**2.4};const D=0.2126*x(U[0])+0.7152*x(U[1])+0.0722*x(U[2]);document.documentElement.style.setProperty("color-scheme",D<0.4?"dark":"light")}catch{}};if(document.readyState==="complete")Y();else window.addEventListener("load",Y)}var _=[];var v=false;var P=30000;var h=3000;document.addEventListener("DOMContentLoaded",()=>{const Y=window.Babel;const k="om-src-id";if(Y&&Y.registerPlugin&&!(Y.availablePlugins&&Y.availablePlugins[k])){Y.registerPlugin(k,({types:D})=>({visitor:{JSXOpeningElement(X,F){const K=X.node;if(K.name&&K.name.type==="JSXMemberExpression")return;for(let z=0;z<K.attributes.length;z++){const V=K.attributes[z];if(V.type==="JSXAttribute"&&V.name&&V.name.name==="data-om-id")return}const B=F.file&&F.file.opts&&F.file.opts.filename||"?";const A=K.loc&&K.loc.start;const J=`jsx:${B}:${K.start??0}:${A?A.line:0}:${A?A.column+1:0}`;K.attributes.push(D.jsxAttribute(D.jsxIdentifier("data-om-id"),D.stringLiteral(J)))}}}))}const w="om-text-extract";let U=false;if(v&&Y&&Y.registerPlugin&&!(Y.availablePlugins&&Y.availablePlugins[w])){const D=window.React;if(D&&D.useSyncExternalStore&&D.createElement){U=true;const X={};const F=new Set;let K=0;window.__omTextO=X;window.__omTextSet=(J)=>{for(const z in J){const V=J[z];if(V==null)delete X[z];else X[z]=V}K++;F.forEach((z)=>z())};const B=(J)=>{F.add(J);return()=>F.delete(J)};const A=()=>K;window.__OmT=function J(z){D.useSyncExternalStore(B,A,A);return D.createElement("span",{"data-om-text":z.i,className:"__om-t"},z.i in X?X[z.i]:z.children)};Y.registerPlugin(w,({types:J})=>{const z={style:1,script:1,noscript:1,textarea:1,title:1,option:1,text:1,tspan:1,textPath:1};const V={placeholder:1,alt:1,title:1,label:1,"aria-label":1,"aria-description":1,"aria-placeholder":1};const W=(Z,H)=>J.logicalExpression("??",J.memberExpression(J.logicalExpression("||",J.memberExpression(J.identifier("window"),J.identifier("__omTextO")),J.objectExpression([])),J.stringLiteral(Z),true),H);const Q=(Z)=>Z.file&&Z.file.opts&&Z.file.opts.filename||"?";const j=(Z)=>Z.file&&Z.file.code||"";const G=(Z,H)=>{const N=($)=>$&&$.start!=null&&$.end!=null&&($.type==="StringLiteral"||$.type==="TemplateLiteral"&&$.expressions.length===0)?[$.start,$.end]:null;const L=N(H);if(L)return L;if(H&&H.type==="Identifier"){const $=Z.scope.getBinding(H.name);if($&&$.constant&&$.path.node.type==="VariableDeclarator"){return N($.path.node.init)}}return null};const R=(Z,H,N)=>{const L=Z.node;let $=false;const M=(q,E)=>{$=true;return J.jsxElement(J.jsxOpeningElement(J.jsxIdentifier("__OmT"),[J.jsxAttribute(J.jsxIdentifier("i"),J.stringLiteral(q))],false),J.jsxClosingElement(J.jsxIdentifier("__OmT")),[E],false)};const C=L.children.map((q)=>{if(q.type==="JSXText"){if(q.start==null||q.end==null)return q;const E=N.slice(q.start,q.end);const f=E.length-E.trimStart().length;const I=E.length-E.trimEnd().length;if(f+I>=E.length)return q;return M(`txt:${H}:${q.start+f}:${q.end-I}`,q)}if(q.type==="JSXExpressionContainer"){const E=G(Z,q.expression);if(E)return M(`str:${H}:${E[0]}:${E[1]}`,q)}return q});if($)L.children=C};return{visitor:{JSXOpeningElement(Z,H){const N=Z.node;const L=Q(H);const $={};for(let M=0;M<N.attributes.length;M++){const C=N.attributes[M];if(C.type!=="JSXAttribute"||!C.name)continue;const q=C.name.name;if(!V[q])continue;if(!C.value||C.value.type!=="StringLiteral")continue;if(C.value.start==null||C.value.end==null)continue;const E=`txt:${L}:${C.value.start}:${C.value.end}`;$[q]=E;C.value=J.jsxExpressionContainer(W(E,J.stringLiteral(C.value.value)))}if(Object.keys($).length){N.attributes.push(J.jsxAttribute(J.jsxIdentifier("data-om-text-attrs"),J.stringLiteral(JSON.stringify($))))}},JSXElement(Z,H){const N=Z.node.openingElement;const L=N&&N.name&&N.name.name;if(L==="__OmT")return;if(typeof L==="string"&&z[L])return;R(Z,Q(H),j(H))},JSXFragment(Z,H){R(Z,Q(H),j(H))}}}})}}const x=U?["transform-react-jsx-source",k,w]:["transform-react-jsx-source",k];document.querySelectorAll('script[type="text/babel"],script[type="text/jsx"]').forEach((D,X)=>{const F=D.getAttribute("data-plugins")||"";const K=x.filter((B)=>F.indexOf(B)<0);if(K.length){D.setAttribute("data-plugins",F?`${F},${K.join(",")}`:K.join(","))}if(!D.hasAttribute("data-filename")){D.setAttribute("data-filename",D.getAttribute("src")||`inline-${X}`)}})});var S=window.parent;if(S&&S!==window){const Y=(J,z)=>{try{S.postMessage({__omelette_log:true,type:J,data:z},"*")}catch{}};["log","warn","error"].forEach((J)=>{const z=console[J];console[J]=(...V)=>{const W=V.map((Q)=>{try{return typeof Q==="object"?JSON.stringify(Q):String(Q)}catch{try{return String(Q)}catch{return"[unstringifiable]"}}}).join(" ");Y(J,W);z.apply(console,V)}});window.addEventListener("error",(J)=>{const z=J.target;if(z&&z!==window&&z.tagName){const V=z.src||z.href||"";Y("resource_error",`${z.tagName} failed to load: ${V}`)}else{Y("error",`${J.message||"Unknown error"} at ${J.filename||"?"}:${J.lineno||0}:${J.colno||0}`)}},true);window.addEventListener("unhandledrejection",(J)=>{const z=J.reason;const V=z instanceof Error?`${z.message} ${z.stack}`:String(z);Y("error",`Unhandled rejection: ${V}`)});const k=()=>{try{S.postMessage({type:"omelette:height",height:document.documentElement.scrollHeight},"*")}catch{}};if(window.ResizeObserver)new ResizeObserver(k).observe(document.documentElement);const w=()=>{k();if(!document.querySelector('script[type="text/babel"],script[type="text/jsx"]'))return;const J=()=>document.getElementById("root")||document.querySelector("body > div[id]");const z=J()?.firstElementChild??null;let V=0;const W=()=>{const Q=J();if(Q&&Q.firstElementChild!==z||++V>30){k();return}setTimeout(W,100)};setTimeout(W,100)};if(document.readyState==="complete")w();else window.addEventListener("load",w);const U={};let x=0;const D=(J)=>new Promise((z,V)=>{if(!_.length){V(new Error("claude.complete: no parent origin"));return}const W=`c${++x}`;const Q=()=>setTimeout(()=>{delete U[W];V(new Error(`claude.complete: no data for ${P/1000}s`))},P);const j=Q();U[W]={resolve:z,reject:V,text:"",t:j,arm:Q};try{for(const G of _){S.postMessage({__om_api:true,id:W,body:J},G)}}catch(G){clearTimeout(j);delete U[W];V(G)}});const X=8;const F=async(J,z)=>{if(!Array.isArray(J.messages)){throw new Error("claude.complete: tools require a messages array")}const V=J.messages.slice();const W={...J,tools:J.tools.map((G)=>{if(G===null||typeof G!=="object")return G;const R={};for(const Z of Object.keys(G)){if(typeof G[Z]!=="function")R[Z]=G[Z]}return R})};const Q=W.tool_choice;const j=Q!=null&&(Q.type==="any"||Q.type==="tool")?{...W,tool_choice:Q.disable_parallel_tool_use!==undefined?{type:"auto",disable_parallel_tool_use:Q.disable_parallel_tool_use}:{type:"auto"}}:W;for(let G=0;G<X;G++){const R=await D({...G===0?W:j,messages:V});const Z=R.message;const H=Z&&Array.isArray(Z.content)?Z.content:null;const N=H?H.filter(($)=>$?.type==="tool_use"):[];if(Z?.stop_reason!=="tool_use"||N.length===0){return R.text}const L=[];for(const $ of N){const M=z.get($.name);if(!M){L.push({type:"tool_result",tool_use_id:$.id,content:`no handler for tool "${$.name}"`,is_error:true});continue}try{const C=await M($.input);const q=typeof C==="string"?C:A(C)??"";L.push({type:"tool_result",tool_use_id:$.id,content:q})}catch(C){L.push({type:"tool_result",tool_use_id:$.id,content:String(C?.message??C??"tool handler failed"),is_error:true})}}V.push({role:"assistant",content:H},{role:"user",content:L})}throw new Error(`claude.complete: exceeded ${X} tool turns`)};window.claude={complete(J){const z=J;if(z!==null&&typeof z==="object"&&Array.isArray(z.tools)&&z.tools.some((V)=>V!==null&&typeof V==="object"&&typeof V.run==="function")){const V=new Map;for(const W of z.tools){if(W!==null&&typeof W==="object"&&typeof W.run==="function"){V.set(String(W.name),W.run)}}return F(z,V)}return D(J).then((V)=>V.text)}};const K={};let B=0;window.omelette={writeFile:(J,z)=>new Promise((V,W)=>{if(!_.length){V();return}const Q=`f${++B}`;const j=setTimeout(()=>{delete K[Q];V()},h);K[Q]={resolve:V,reject:W,t:j};try{for(const G of _){S.postMessage({__om_file:true,id:Q,op:"write",path:J,content:z},G)}}catch{clearTimeout(j);delete K[Q];V()}})};const A=(J)=>{try{return JSON.stringify(J)}catch{return JSON.stringify(String(J))}};window.addEventListener("message",(J)=>{if(_.indexOf(J.origin)<0)return;if(J.source!==S)return;const z=J.data;if(!z)return;if(z.type==="omelette-preview-refresh"){if(typeof z.token!=="string"||!/^[0-9a-f.-]+(\.(rc|pr-[0-9]+))?(\.[0-9]+\.[0-9a-f]{16})?$/.test(z.token))return;const Q=Math.max(1,Math.floor((z.expiresAt||0)-Date.now()/1000));document.cookie="__Host-omelette-preview="+z.token+"; Path=/; Secure; SameSite=None; Partitioned; Max-Age="+Q;return}if(z.__om_file_r){const Q=K[z.id];if(!Q)return;clearTimeout(Q.t);delete K[z.id];if(z.ok)Q.resolve();else Q.reject(new Error(z.error||"write failed"));return}if(z.__om_api_r){const Q=U[z.id];if(!Q)return;if(z.error!=null){clearTimeout(Q.t);delete U[z.id];Q.reject(new Error(z.error));return}if(z.chunk!=null){clearTimeout(Q.t);Q.t=Q.arm();Q.text+=z.chunk;return}if(z.done){clearTimeout(Q.t);delete U[z.id];Q.resolve({text:z.text!=null?z.text:Q.text,message:z.message});return}return}if(!z.__om_eval)return;const V=z;const W=(Q)=>{J.source.postMessage({...Q,__om_eval_r:1,id:V.id},J.origin)};try{const Q=(0,eval)(V.code);if(Q&&typeof Q.then==="function"){Q.then((j)=>W({ok:1,v:A(j)}),(j)=>W({ok:0,e:String(j)}))}else{W({ok:1,v:A(Q)})}}catch(Q){W({ok:0,e:String(Q)})}})}})();
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics=""><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&amp;display=swap" rel="stylesheet"><style>body{margin:0;background:#f4f6f9}</style></helmet>
+
+<div style="min-height:100vh;background:#f4f6f9;color:#1c2432;font-family:'Source Sans 3',sans-serif;display:flex;flex-direction:column">
+
+  <!-- ============ Header ============ -->
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 48px;border-bottom:1px solid rgba(28,36,50,0.08)">
+    <div onClick="{{ goHome }}" style="display:flex;align-items:center;gap:12px;cursor:pointer">
+      <img src="assets/four-alba-icon.png" alt="Four Alba" style="height:36px">
+      <span style="font-weight:700;font-size:16px;letter-spacing:0.14em">FOUR ALBA</span>
+    </div>
+    <div style="display:flex;gap:28px;font-size:14px;font-weight:600;color:#5a6880">
+      <span onClick="{{ goHome }}" style="cursor:pointer" style-hover="color:#1c2432">Apps</span>
+      <span onClick="{{ goSupport }}" style="cursor:pointer" style-hover="color:#1c2432">Support</span>
+      <span onClick="{{ goPrivacy }}" style="cursor:pointer" style-hover="color:#1c2432">Privacy</span>
+      <span onClick="{{ goSupport }}" style="cursor:pointer" style-hover="color:#1c2432">Contact</span>
+    </div>
+  </div>
+
+  <div style="flex:1">
+
+  <!-- ============ HOME ============ -->
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <div data-screen-label="Home">
+      <div style="padding:80px 48px 56px;text-align:center">
+        <div style="display:inline-flex;flex-direction:column;gap:5px;margin-bottom:26px">
+          <div style="width:64px;height:9px;border-radius:4px;background:#16283f;border:1px solid rgba(28,36,50,0.18)"></div>
+          <div style="width:64px;height:9px;border-radius:4px;background:#2f5185"></div>
+          <div style="width:64px;height:9px;border-radius:4px;background:#c0762f"></div>
+          <div style="width:64px;height:9px;border-radius:4px;background:#ddab4a"></div>
+        </div>
+        <h1 style="margin:0 0 14px;font-size:44px;line-height:1.1;font-weight:700;letter-spacing:-0.01em">Apps by Four Alba</h1>
+        <p style="margin:0 auto;max-width:520px;font-size:17.5px;line-height:1.55;color:#5a6880">An independent software studio building focused, useful apps</p>
+      </div>
+      <div style="max-width:1000px;margin:0 auto;padding:0 48px 80px;display:grid;grid-template-columns:1fr 1fr;gap:18px">
+        <div onClick="{{ featured.open }}" style="grid-column:1/-1;display:flex;align-items:center;gap:22px;background:linear-gradient(120deg,#eef2f7,#ffffff);border:1px solid rgba(28,36,50,0.12);border-radius:14px;padding:28px 30px;cursor:pointer" style-hover="border-color:rgba(176,108,37,0.55)">
+          <div style="width:64px;height:64px;border-radius:16px;background:{{ featured.bg }};flex:none;display:grid;place-items:center;color:{{ featured.fg }};font-weight:700;font-size:22px;overflow:hidden">{{ featured.tile }}</div>
+          <div style="flex:1"><div style="font-weight:700;font-size:20px;margin-bottom:4px">{{ featured.name }}</div><div style="font-size:15px;color:#5a6880;line-height:1.5">{{ featured.tag }}</div></div>
+          <div style="font-size:12.5px;font-weight:700;color:#b06c25;border:1px solid rgba(176,108,37,0.5);border-radius:99px;padding:6px 14px;flex:none">{{ statusLabel }}</div>
+        </div>
+        <sc-for list="{{ others }}" as="app" hint-placeholder-count="4">
+          <div onClick="{{ app.open }}" style="display:flex;flex-direction:column;gap:14px;background:#ffffff;border:1px solid rgba(28,36,50,0.08);border-radius:14px;padding:24px 26px;cursor:pointer" style-hover="border-color:rgba(176,108,37,0.55)">
+            <div style="width:52px;height:52px;border-radius:13px;background:{{ app.bg }};display:grid;place-items:center;color:{{ app.fg }};font-weight:700;font-size:18px;overflow:hidden">{{ app.tile }}</div>
+            <div><div style="font-weight:700;font-size:17px;margin-bottom:4px">{{ app.name }}</div><div style="font-size:14.5px;color:#5a6880;line-height:1.5">{{ app.tag }}</div></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ============ APP DETAIL ============ -->
+  <sc-if value="{{ isApp }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="App detail" style="max-width:960px;margin:0 auto;padding:64px 48px 96px;display:flex;gap:56px;align-items:flex-start">
+      <div style="flex:1;min-width:0">
+        <div onClick="{{ goHome }}" style="font-size:14px;font-weight:600;color:#5a6880;cursor:pointer;margin-bottom:40px" style-hover="color:#1c2432">← All apps</div>
+        <div style="display:flex;align-items:center;gap:24px;margin-bottom:28px">
+          <div style="width:84px;height:84px;border-radius:21px;background:{{ app.bg }};flex:none;display:grid;place-items:center;color:{{ app.fg }};font-weight:700;font-size:30px;overflow:hidden">{{ app.tile }}</div>
+          <div>
+            <h1 style="margin:0 0 6px;font-size:34px;font-weight:700;letter-spacing:-0.01em">{{ app.name }}</h1>
+            <div style="font-size:17px;color:#5a6880">{{ app.tag }}</div>
+          </div>
+        </div>
+        <div style="display:inline-block;font-size:12.5px;font-weight:700;color:#b06c25;border:1px solid rgba(176,108,37,0.5);border-radius:99px;padding:6px 14px;margin-bottom:32px">{{ statusLabel }}</div>
+        <p style="margin:0 0 40px;font-size:17px;line-height:1.65;color:#3f4a5e">{{ app.blurb }}</p>
+        <div style="border-top:1px solid rgba(28,36,50,0.12);padding-top:28px;display:flex;flex-wrap:wrap;gap:24px;font-size:14.5px;font-weight:600;color:#5a6880">
+          <span onClick="{{ goPrivacy }}" style="cursor:pointer;text-decoration:underline;text-underline-offset:3px" style-hover="color:#1c2432">Privacy policy</span>
+          <span onClick="{{ goDeletion }}" style="cursor:pointer;text-decoration:underline;text-underline-offset:3px" style-hover="color:#1c2432">Account &amp; data deletion</span>
+          <span onClick="{{ goSupport }}" style="cursor:pointer;text-decoration:underline;text-underline-offset:3px" style-hover="color:#1c2432">Support</span>
+        </div>
+      </div>
+      <sc-if value="{{ appHasShot }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:none;width:280px;border-radius:22px;overflow:hidden;border:1px solid rgba(28,36,50,0.14);box-shadow:0 24px 60px rgba(16,27,44,0.16)">
+          <sc-if value="{{ shotIsMtt }}" hint-placeholder-val="{{ false }}"><img src="assets/screenshot-mtt-gto.png" alt="MTT GTO Poker Trainer screenshot" style="display:block;width:100%"></sc-if>
+          <sc-if value="{{ shotIsBlapl }}" hint-placeholder-val="{{ false }}"><img src="assets/screenshot-blapl.png" alt="BLAPL screenshot" style="display:block;width:100%"></sc-if>
+          <sc-if value="{{ shotIsQr }}" hint-placeholder-val="{{ false }}"><img src="assets/screenshot-too-easy-qr.png" alt="Too Easy QR screenshot" style="display:block;width:100%"></sc-if>
+          <sc-if value="{{ shotIsClock }}" hint-placeholder-val="{{ false }}"><img src="assets/screenshot-poker-clock.png" alt="Poker Clock screenshot" style="display:block;width:100%"></sc-if>
+        </div>
+      </sc-if>
+      <sc-if value="{{ appNoShot }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:none;width:280px;height:560px;border-radius:22px;border:1px dashed rgba(28,36,50,0.3);display:grid;place-items:center;color:#8291a6;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;text-align:center;padding:20px;box-sizing:border-box">app screenshot<br>coming soon</div>
+      </sc-if>
+    </div>
+  </sc-if>
+
+  <!-- ============ PRIVACY ============ -->
+  <sc-if value="{{ isPrivacy }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Privacy policy" style="max-width:720px;margin:0 auto;padding:64px 48px 96px;font-size:16px;line-height:1.7;color:#3f4a5e">
+      <h1 style="margin:0 0 8px;font-size:34px;font-weight:700;color:#1c2432">Privacy Policy</h1>
+      <p style="margin:0 0 36px;font-size:14px;color:#8291a6">Last updated: July 4, 2026 · Applies to all Four Alba LLC apps: ScanSitPlay, BLAPL, Too Easy QR, Poker Clock, and MTT GTO Poker Trainer. <em>Draft — review before publishing.</em></p>
+      <h2 style="margin:32px 0 10px;font-size:20px;color:#1c2432">Overview</h2>
+      <p style="margin:0">Four Alba LLC ("we", "us") builds mobile applications. This policy describes what information our apps collect, how it is used, and the choices you have. We design our apps to collect as little data as possible.</p>
+      <h2 style="margin:32px 0 10px;font-size:20px;color:#1c2432">Information we collect</h2>
+      <p style="margin:0 0 10px">Depending on the app and the features you use, we may collect:</p>
+      <ul style="margin:0;padding-left:22px">
+        <li style="margin-bottom:8px"><strong style="color:#1c2432">Information you provide</strong> — such as a name or email address if you create an account, join a league, or contact support.</li>
+        <li style="margin-bottom:8px"><strong style="color:#1c2432">Device and usage data</strong> — such as device model, OS version, crash logs, and anonymized analytics used to improve app stability.</li>
+        <li style="margin-bottom:8px"><strong style="color:#1c2432">Camera access</strong> — apps with scanning features (ScanSitPlay, BLAPL, Too Easy QR) use the camera solely to read QR codes. Images are processed on-device and are not stored or transmitted.</li>
+      </ul>
+      <h2 style="margin:32px 0 10px;font-size:20px;color:#1c2432">How we use information</h2>
+      <p style="margin:0">We use collected information to operate app features, maintain accounts and league memberships, fix bugs, and respond to support requests. We do not sell personal information, and we do not use it for third-party advertising.</p>
+      <h2 style="margin:32px 0 10px;font-size:20px;color:#1c2432">Sharing</h2>
+      <p style="margin:0">We share data only with service providers required to run our apps (such as cloud hosting and crash reporting), and only as needed. We may disclose information if required by law.</p>
+      <h2 style="margin:32px 0 10px;font-size:20px;color:#1c2432">Data retention &amp; deletion</h2>
+      <p style="margin:0">Account data is retained while your account is active. You may request deletion of your account and associated data at any time — see our <span onClick="{{ goDeletion }}" style="color:#b06c25;cursor:pointer;text-decoration:underline;text-underline-offset:3px">account deletion instructions</span>.</p>
+      <h2 style="margin:32px 0 10px;font-size:20px;color:#1c2432">Children</h2>
+      <p style="margin:0">Our apps are not directed at children under 13, and we do not knowingly collect personal information from them.</p>
+      <h2 style="margin:32px 0 10px;font-size:20px;color:#1c2432">Changes</h2>
+      <p style="margin:0">We may update this policy from time to time. Material changes will be reflected by the "Last updated" date above.</p>
+      <h2 style="margin:32px 0 10px;font-size:20px;color:#1c2432">Contact</h2>
+      <p style="margin:0">Questions? Email <a href="mailto:support@fouralba.com" style="color:#b06c25">support@fouralba.com</a>.</p>
+    </div>
+  </sc-if>
+
+  <!-- ============ TERMS ============ -->
+  <sc-if value="{{ isTerms }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Terms of service" style="max-width:720px;margin:0 auto;padding:64px 48px 96px;font-size:16px;line-height:1.7;color:#3f4a5e">
+      <h1 style="margin:0 0 8px;font-size:34px;font-weight:700;color:#1c2432">Terms of Service</h1>
+      <p style="margin:0 0 36px;font-size:14px;color:#8291a6">Last updated: July 4, 2026 · <em>Draft — review before publishing.</em></p>
+      <h2 style="margin:32px 0 10px;font-size:20px;color:#1c2432">Acceptance</h2>
+      <p style="margin:0">By downloading or using any Four Alba LLC app, you agree to these terms. If you do not agree, do not use our apps.</p>
+      <h2 style="margin:32px 0 10px;font-size:20px;color:#1c2432">Use of our apps</h2>
+      <p style="margin:0">You may use our apps for personal, non-commercial purposes. You agree not to misuse the apps, attempt to access them by unauthorized means, or interfere with their operation.</p>
+      <h2 style="margin:32px 0 10px;font-size:20px;color:#1c2432">Accounts</h2>
+      <p style="margin:0">Some apps require an account. You are responsible for keeping your credentials secure and for activity under your account. We may suspend accounts that violate these terms.</p>
+      <h2 style="margin:32px 0 10px;font-size:20px;color:#1c2432">No gambling</h2>
+      <p style="margin:0">Our poker-related apps are utilities and training tools. They do not offer real-money wagering, and nothing in them constitutes gambling services or gambling advice.</p>
+      <h2 style="margin:32px 0 10px;font-size:20px;color:#1c2432">Intellectual property</h2>
+      <p style="margin:0">The apps, including their design, code, and content, are owned by Four Alba LLC and protected by applicable law. These terms do not grant you any rights to our trademarks or branding.</p>
+      <h2 style="margin:32px 0 10px;font-size:20px;color:#1c2432">Disclaimer &amp; limitation of liability</h2>
+      <p style="margin:0">Apps are provided "as is" without warranties of any kind. To the maximum extent permitted by law, Four Alba LLC is not liable for indirect, incidental, or consequential damages arising from your use of the apps.</p>
+      <h2 style="margin:32px 0 10px;font-size:20px;color:#1c2432">Changes &amp; contact</h2>
+      <p style="margin:0">We may update these terms; continued use after changes constitutes acceptance. Questions: <a href="mailto:support@fouralba.com" style="color:#b06c25">support@fouralba.com</a>.</p>
+    </div>
+  </sc-if>
+
+  <!-- ============ SUPPORT / CONTACT ============ -->
+  <sc-if value="{{ isSupport }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Support" style="max-width:720px;margin:0 auto;padding:64px 48px 96px">
+      <h1 style="margin:0 0 8px;font-size:34px;font-weight:700">Support &amp; Contact</h1>
+      <p style="margin:0 0 40px;font-size:17px;line-height:1.6;color:#5a6880">Questions, bug reports, feature requests — we read everything.</p>
+      <div style="display:flex;flex-direction:column;gap:16px;max-width:520px">
+        <div style="background:#ffffff;border:1px solid rgba(28,36,50,0.08);border-radius:14px;padding:24px 26px">
+          <div style="font-weight:700;font-size:16px;margin-bottom:6px">Email us</div>
+          <p style="margin:0 0 12px;font-size:15px;color:#5a6880;line-height:1.55">The fastest way to reach us. Include the app name and your device model if reporting a bug.</p>
+          <a href="mailto:support@fouralba.com" style="color:#b06c25;font-weight:700;font-size:16px;text-decoration:none">support@fouralba.com</a>
+        </div>
+        <div style="background:#ffffff;border:1px solid rgba(28,36,50,0.08);border-radius:14px;padding:24px 26px">
+          <div style="font-weight:700;font-size:16px;margin-bottom:6px">Account &amp; data deletion</div>
+          <p style="margin:0 0 12px;font-size:15px;color:#5a6880;line-height:1.55">Want your account and data removed from one of our apps?</p>
+          <span onClick="{{ goDeletion }}" style="color:#b06c25;font-weight:700;font-size:15px;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Deletion instructions →</span>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ============ ACCOUNT DELETION ============ -->
+  <sc-if value="{{ isDeletion }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="Account deletion" style="max-width:720px;margin:0 auto;padding:64px 48px 96px;font-size:16px;line-height:1.7;color:#3f4a5e">
+      <h1 style="margin:0 0 8px;font-size:34px;font-weight:700;color:#1c2432">Account &amp; Data Deletion</h1>
+      <p style="margin:0 0 36px;font-size:14px;color:#8291a6">Applies to all Four Alba LLC apps.</p>
+      <p style="margin:0 0 24px">You can request deletion of your account and associated personal data from any Four Alba app at any time. There are two ways:</p>
+      <h2 style="margin:32px 0 10px;font-size:20px;color:#1c2432">1. In the app</h2>
+      <p style="margin:0">If the app has an account, open <strong style="color:#1c2432">Profile → Settings → Delete account</strong>. Deletion is immediate and permanent.</p>
+      <h2 style="margin:32px 0 10px;font-size:20px;color:#1c2432">2. By email</h2>
+      <p style="margin:0">Email <a href="mailto:support@fouralba.com?subject=Account%20deletion%20request" style="color:#b06c25">support@fouralba.com</a> with the subject "Account deletion request". Include the app name and the email address associated with your account. We will confirm and complete deletion within 30 days.</p>
+      <h2 style="margin:32px 0 10px;font-size:20px;color:#1c2432">What is deleted</h2>
+      <p style="margin:0">Your account, profile information, and app activity tied to your account. Anonymized analytics that cannot be linked to you may be retained. Records we are legally required to keep (if any) are retained only as long as required.</p>
+    </div>
+  </sc-if>
+
+  </div>
+
+  <!-- ============ Footer ============ -->
+  <div style="border-top:1px solid rgba(28,36,50,0.08);padding:32px 48px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:#8291a6">
+      <img src="assets/four-alba-icon.png" alt="" style="height:22px;opacity:0.8">
+      <span>© 2026 Four Alba LLC</span>
+    </div>
+    <div style="display:flex;gap:22px;font-size:13.5px;font-weight:600;color:#5a6880;flex-wrap:wrap">
+      <span onClick="{{ goPrivacy }}" style="cursor:pointer" style-hover="color:#1c2432">Privacy</span>
+      <span onClick="{{ goTerms }}" style="cursor:pointer" style-hover="color:#1c2432">Terms</span>
+      <span onClick="{{ goDeletion }}" style="cursor:pointer" style-hover="color:#1c2432">Account deletion</span>
+      <span onClick="{{ goSupport }}" style="cursor:pointer" style-hover="color:#1c2432">Support</span>
+      <a href="mailto:support@fouralba.com" style="color:#5a6880;text-decoration:none" style-hover="color:#1c2432">support@fouralba.com</a>
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;statusLabel&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;COMING SOON&quot;, &quot;tsType&quot;: &quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { route: (typeof location !== 'undefined' && location.hash) ? location.hash.slice(1) : 'home' };
+
+  componentDidMount() {
+    this._onHash = () => this.setState({ route: location.hash.slice(1) || 'home' });
+    window.addEventListener('hashchange', this._onHash);
+  }
+  componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); }
+
+  go(route) { location.hash = route; window.scrollTo(0, 0); }
+
+  apps() {
+    return [
+      { id: 'mtt-gto-trainer', name: 'MTT GTO Poker Trainer', letter: 'G', bg: '#ddab4a', fg: '#16283f', featured: true,
+        tag: 'Drill GTO-correct tournament decisions, hand by hand.',
+        blurb: 'A training tool for serious tournament players. Study game-theory-optimal strategy for multi-table tournaments and drill real in-game spots — preflop and postflop — until correct decisions become automatic. Five training modes: Open, Push/Fold, Call a Shove, Facing a Raise, and 3-bet Defense.',
+        shot: 'assets/screenshot-mtt-gto.png' },
+      { id: 'scansitplay', name: 'ScanSitPlay', letter: 'S', bg: '#2f5185', fg: '#ffffff',
+        tag: 'The poker league app for any league.',
+        blurb: 'Everything a poker league needs in one app: personal QR check-in, seating assignments, standings, qualification tracking, coupons, and league info. ScanSitPlay is the league platform for everyone — BLAPL is its dedicated edition for the Brainerd Lakes Area Poker League.',
+        shot: null },
+      { id: 'blapl', name: 'BLAPL', letter: 'B', bg: '#16283f', fg: '#ffffff',
+        tag: 'The Brainerd Lakes Area Poker League app.',
+        blurb: 'The official app of the Brainerd Lakes Area Poker League — a dedicated edition of ScanSitPlay. Your personal QR code for check-in, seating assignments, TOC qualification tracking, standings, coupons, and league info — all in one place.',
+        shot: 'assets/screenshot-blapl.png' },
+      { id: 'too-easy-qr', name: 'Too Easy QR', letter: 'Q', bg: '#ddab4a', fg: '#16283f',
+        tag: 'QR codes made too easy.',
+        blurb: 'Create custom QR codes in seconds — no design skills needed. Go dynamic for editable destinations and real-time scan analytics, or generate unlimited static codes for free.',
+        shot: 'assets/screenshot-too-easy-qr.png' },
+      { id: 'poker-clock', name: 'Poker Clock', letter: 'P', bg: '#c0762f', fg: '#ffffff',
+        tag: 'A beautiful tournament blind timer.',
+        blurb: 'Run your tournament like a card room. Full blind structures with levels and breaks, one-tap time adjustments, and a display designed to be read from across the table.',
+        shot: 'assets/screenshot-poker-clock.png' }
+    ];
+  }
+
+  renderVals() {
+    const route = this.state.route;
+    const icons = {
+      'mtt-gto-trainer': 'assets/icon-mtt-gto.png',
+      'blapl': 'assets/icon-blapl.png',
+      'too-easy-qr': 'assets/icon-too-easy-qr.png',
+      'poker-clock': 'assets/icon-poker-clock.svg',
+      'scansitplay': 'assets/icon-scansitplay.svg'
+    };
+    const apps = this.apps().map(a => ({
+      ...a,
+      noShot: !a.shot,
+      open: () => this.go('app/' + a.id),
+      tile: icons[a.id]
+        ? React.createElement('img', { src: icons[a.id], alt: '', style: { display: 'block', width: '100%', height: '100%', objectFit: 'cover' } })
+        : a.letter
+    }));
+    const featured = apps.find(a => a.featured);
+    const others = apps.filter(a => !a.featured);
+    const isApp = route.startsWith('app/');
+    const app = isApp ? (apps.find(a => a.id === route.slice(4)) || apps[0]) : apps[0];
+    return {
+      isHome: route === 'home' || route === '',
+      isApp, app, featured, others,
+      appHasShot: isApp && !!app.shot,
+      shotIsMtt: isApp && app.id === 'mtt-gto-trainer',
+      shotIsBlapl: isApp && app.id === 'blapl',
+      shotIsQr: isApp && app.id === 'too-easy-qr',
+      shotIsClock: isApp && app.id === 'poker-clock',
+      appNoShot: isApp && !app.shot,
+      isPrivacy: route === 'privacy',
+      isTerms: route === 'terms',
+      isSupport: route === 'support',
+      isDeletion: route === 'deletion',
+      statusLabel: this.props.statusLabel ?? 'COMING SOON',
+      goHome: () => this.go('home'),
+      goPrivacy: () => this.go('privacy'),
+      goTerms: () => this.go('terms'),
+      goSupport: () => this.go('support'),
+      goDeletion: () => this.go('deletion')
+    };
+  }
+}
+</script>
+</body>
+</html>
