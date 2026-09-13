@@ -239,6 +239,8 @@ main { flex: 1; }
 .app-title-row .app-tag { font-size: 17px; color: var(--text-muted); }
 
 .app-detail .badge { margin-bottom: 32px; }
+.store-badges { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 32px; }
+.store-badges img { display: block; height: 60px; width: auto; }
 
 .app-blurb {
   margin: 0 0 40px;
